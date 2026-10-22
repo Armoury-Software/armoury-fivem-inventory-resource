@@ -1,4 +1,9 @@
-import { bootstrap } from '@armoury/fivem-framework-server';
-import { Server } from './controllers/server.controller';
+import { bootstrap } from '@armoury/fivem-roleplay-gamemode-server';
 
-bootstrap(Server);
+import { Server } from './controllers/server.controller';
+import { InventoryOpenInteraction } from './service/interaction/inventory-open.interaction';
+import { InventoryService } from './service/inventory.service';
+
+bootstrap(Server, {
+  eager: [InventoryOpenInteraction, InventoryService],
+});

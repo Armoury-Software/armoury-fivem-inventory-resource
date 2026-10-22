@@ -7,3 +7,7 @@ version '1.0.1'
 
 server_script 'dist/server/*.server.js'
 client_script 'dist/client/*.client.js'
+
+files {
+  'locales/*.json'
+}
