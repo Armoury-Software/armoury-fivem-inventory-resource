@@ -1,12 +1,12 @@
 import { EVENT_DIRECTIONS, EventListener, SessionService } from '@armoury/fivem-framework-server';
-import { Character, Stash, StashService } from '@armoury/fivem-roleplay-gamemode-server';
+import { Character, Stash, Stashes } from '@armoury/fivem-roleplay-gamemode-server';
 import { Injectable } from 'injection-js';
 
 @Injectable()
 export class InventoryService {
   private _characterIdsToStashIds = new Map<number, Record<InventoryStashType, number>>();
 
-  public constructor(private readonly _stashes: StashService, private readonly _sessions: SessionService) {}
+  public constructor(private readonly _sessions: SessionService) {}
 
   public getPlayerStashFromPlayerId(playerId: number, type: InventoryStashType): Stash | null {
     const session = this._sessions.getSessionByPlayerId(playerId);
@@ -39,7 +39,7 @@ export class InventoryService {
       return null;
     }
 
-    return this._stashes.findByIdImmediate(stashId);
+    return Stashes.findByIdImmediate(stashId);
   }
 
   private async loadPlayerInventory(playerId: number, characterId?: number, persistableId?: number): Promise<void> {
@@ -92,7 +92,7 @@ export class InventoryService {
           [type]: NaN,
         });
 
-        return this._stashes.findByType(type, persistableId);
+        return Stashes.findByType(type, persistableId);
       })
     );
 

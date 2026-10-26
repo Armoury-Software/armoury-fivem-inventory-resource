@@ -7,7 +7,7 @@
   "type": "commonjs",
   "scripts": {},
   "dependencies": {
-    "@armoury/fivem-framework-client": "^1.0.49",
-    "@armoury/fivem-roleplay-gamemode-client": "^1.0.53"
+    "@armoury/fivem-framework-client": "^1.0.55",
+    "@armoury/fivem-roleplay-gamemode-client": "^1.0.59"
   }
 }
